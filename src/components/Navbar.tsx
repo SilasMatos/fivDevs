@@ -48,7 +48,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="#pricing" legacyBehavior>
-              <a className="hover:text-blue-300">Preços</a>
+              <a className="hover:text-blue-300">Contato</a>
             </Link>
           </li>
           <li>
