@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full text-white py-4 fixed top-0 transition-colors duration-300 ${
+      className={`w-full text-white py-4 fixed top-0 transition-colors duration-300 z-50 ${
         scrolled ? 'bg-[#16215B] blur-3xl' : 'bg-transparent'
       }`}
     >
@@ -58,6 +58,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="flex items-center space-x-4">
+          {/* Uncomment the following lines if you need Sign In and Sign Up links */}
           {/* <Link href="#signin" legacyBehavior>
             <a className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded">
               Entrar
