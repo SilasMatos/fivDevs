@@ -1,6 +1,7 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react'
 import team1 from '../assets/team/silas.jpg'
+import bg from '../assets/shapes/shapebg.png'
 
 const teamMembers = [
   {
@@ -58,7 +59,7 @@ export default function MyTeam() {
     e.preventDefault()
     const x =
       (e as React.MouseEvent).pageX || (e as React.TouchEvent).touches[0].pageX
-    const walk = (x - startX) * 2 // Ajustar a velocidade de deslocamento
+    const walk = (x - startX) * 2
     containerRef.current!.scrollLeft = scrollLeft - walk
   }
 
@@ -74,15 +75,22 @@ export default function MyTeam() {
       }
     }
 
-    const intervalId = setInterval(autoScroll, 20) // Ajuste a velocidade conforme necessário
+    const intervalId = setInterval(autoScroll, 20)
 
     return () => clearInterval(intervalId)
   }, [])
 
   return (
-    <section className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative">
+    <section className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative overflow-hidden bg-image">
+      <div className="text-center mb-10 z-10 relative">
+        <h1 className="text-white text-4xl">Conheça nossa equipe</h1>
+        <p className="text-lg font-medium text-gray-300">
+          There are many variations of passages of Lorem Ipsum available but the
+          majority have suffered alteration in some form.
+        </p>
+      </div>
       <div
-        className="container mx-auto flex gap-6 overflow-hidden"
+        className="container mx-auto flex gap-6 overflow-hidden z-10 relative"
         ref={containerRef}
         onMouseDown={startDrag}
         onMouseLeave={stopDrag}

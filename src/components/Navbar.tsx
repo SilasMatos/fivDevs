@@ -37,23 +37,23 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="#about" legacyBehavior>
+            <Link href="#sobre" legacyBehavior>
               <a className="hover:text-blue-300">Sobre</a>
             </Link>
           </li>
           <li>
-            <Link href="#services" legacyBehavior>
+            <Link href="#servicos" legacyBehavior>
               <a className="hover:text-blue-300">Serviços</a>
             </Link>
           </li>
           <li>
-            <Link href="#pricing" legacyBehavior>
-              <a className="hover:text-blue-300">Contato</a>
+            <Link href="#equipe" legacyBehavior>
+              <a className="hover:text-blue-300">Equipe</a>
             </Link>
           </li>
           <li>
-            <Link href="#support" legacyBehavior>
-              <a className="hover:text-blue-300">Suporte</a>
+            <Link href="#contato" legacyBehavior>
+              <a className="hover:text-blue-300">Contato</a>
             </Link>
           </li>
         </ul>
