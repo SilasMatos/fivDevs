@@ -57,19 +57,6 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <div className="flex items-center space-x-4">
-          {/* Uncomment the following lines if you need Sign In and Sign Up links */}
-          {/* <Link href="#signin" legacyBehavior>
-            <a className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded">
-              Entrar
-            </a>
-          </Link>
-          <Link href="#signup" legacyBehavior>
-            <a className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-              Cadastrar
-            </a>
-          </Link> */}
-        </div>
       </div>
     </nav>
   )
