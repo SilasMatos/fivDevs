@@ -36,33 +36,41 @@ const teamMembers = [
 ]
 
 export default function MyTeam() {
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
 
-  const startDrag = e => {
+  const startDrag = (e: React.MouseEvent | React.TouchEvent) => {
     setIsDragging(true)
-    setStartX(e.pageX || e.touches[0].pageX)
-    setScrollLeft(containerRef.current.scrollLeft)
+    setStartX(
+      (e as React.MouseEvent).pageX || (e as React.TouchEvent).touches[0].pageX
+    )
+    setScrollLeft(containerRef.current!.scrollLeft)
   }
 
   const stopDrag = () => {
     setIsDragging(false)
   }
 
-  const onDrag = e => {
+  const onDrag = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return
     e.preventDefault()
-    const x = e.pageX || e.touches[0].pageX
+    const x =
+      (e as React.MouseEvent).pageX || (e as React.TouchEvent).touches[0].pageX
     const walk = (x - startX) * 2 // Ajustar a velocidade de deslocamento
-    containerRef.current.scrollLeft = scrollLeft - walk
+    containerRef.current!.scrollLeft = scrollLeft - walk
   }
 
   useEffect(() => {
+    const container = containerRef.current
+
     const autoScroll = () => {
-      if (containerRef.current) {
-        containerRef.current.scrollLeft += 1
+      if (container) {
+        container.scrollLeft += 1
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0
+        }
       }
     }
 
@@ -85,24 +93,26 @@ export default function MyTeam() {
         onTouchMove={onDrag}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
-        {teamMembers.map((member, index) => (
-          <div
-            key={index}
-            className="min-w-[300px] bg-[#1D2144] rounded-lg shadow-lg p-6 m-4 transform transition-transform duration-200"
-            style={{ transform: isDragging ? 'scale(0.95)' : 'scale(1)' }}
-          >
-            <img
-              src={member.image.src}
-              alt={member.name}
-              className="w-full h-48 object-cover rounded-t-lg"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-bold text-white">{member.name}</h2>
-              <p className="text-white">{member.role}</p>
-              <p className="text-gray-100 mt-2">{member.description}</p>
+        <div className="flex">
+          {[...teamMembers, ...teamMembers].map((member, index) => (
+            <div
+              key={index}
+              className="min-w-[300px] bg-[#1D2144] rounded-lg shadow-lg p-6 m-4 transform transition-transform duration-200"
+              style={{ transform: isDragging ? 'scale(0.95)' : 'scale(1)' }}
+            >
+              <img
+                src={member.image.src}
+                alt={member.name}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div className="p-4">
+                <h2 className="text-xl font-bold text-white">{member.name}</h2>
+                <p className="text-white">{member.role}</p>
+                <p className="text-gray-100 mt-2">{member.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )
