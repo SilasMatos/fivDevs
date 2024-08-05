@@ -2,7 +2,10 @@ import React from 'react'
 
 export default function Contact() {
   return (
-    <section className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative">
+    <section
+      className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative"
+      id="contato"
+    >
       <div className="container mx-auto flex gap-6">
         <div className="bg-[#1D2144] p-6 w-full rounded-md">
           <h1 className="text-white font-bold text-2xl">

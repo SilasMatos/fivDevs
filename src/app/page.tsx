@@ -13,7 +13,10 @@ export default function Home() {
   return (
     <>
       <main>
-        <header className="bg-[#090E34] min-h-screen relative flex justify-center items-center">
+        <header
+          className="bg-[#090E34] min-h-screen relative flex justify-center items-center"
+          id="home"
+        >
           <div className="absolute right-0 top-0">
             <Image
               src="/shapes/SVG.png"
@@ -35,11 +38,22 @@ export default function Home() {
                   <br /> Design de alta qualidade e tudo o que você precisa.
                 </p>
                 <div className="mt-8 flex justify-center md:justify-start">
-                  <button className="bg-[#1D2144] hover:bg-[#5561FF] min-w-[250px] rounded-md shadow-xl border-2 border-[#5561FF] flex justify-center gap-2 items-center py-4 transition duration-300 transform hover:scale-105">
-                    <span className="text-white font-normal text-xl">
-                      Saiba Mais
-                    </span>
-                    <IoIosSend size={25} />
+                  <button className="contactButton">
+                    Saiba Mais
+                    <div className="iconButton">
+                      <svg
+                        height="24"
+                        width="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                          d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </div>
                   </button>
                 </div>
               </div>
@@ -52,12 +66,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]">
+          <div className="absolute bottom-0 left-0  ">
             <Image
               src="/shapes/SVG2.png"
               alt="Shapes"
-              layout="fill"
-              objectFit="contain"
+              width={500}
+              height={500}
             />
           </div>
         </header>

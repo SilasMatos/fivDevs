@@ -5,7 +5,10 @@ import img1 from '../assets/img/about-image-2.svg.png'
 
 export default function About() {
   return (
-    <section className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative">
+    <section
+      className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative"
+      id="sobre"
+    >
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-10 p-10 border-b border-blue-950">
         <div className="text-center md:text-left">
           <h1 className="text-white text-4xl mb-2">

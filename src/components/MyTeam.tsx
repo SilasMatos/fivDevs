@@ -1,6 +1,7 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react'
-import team1 from '../assets/team/silas.jpg'
+import team1 from '../assets/team/foto1.jpg'
+import team2 from '../assets/team/yan.jpg'
 import bg from '../assets/shapes/shapebg.png'
 
 const teamMembers = [
@@ -13,7 +14,7 @@ const teamMembers = [
   {
     name: 'Maria Souza',
     role: 'Backend Developer',
-    image: team1,
+    image: team2,
     description: 'Experiência em Node.js e banco de dados.'
   },
   {
@@ -81,7 +82,10 @@ export default function MyTeam() {
   }, [])
 
   return (
-    <section className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative overflow-hidden bg-image">
+    <section
+      className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative overflow-hidden bg-image"
+      id="equipe"
+    >
       <div className="text-center mb-10 z-10 relative">
         <h1 className="text-white text-4xl">Conheça nossa equipe</h1>
         <p className="text-lg font-medium text-gray-300">
@@ -105,7 +109,7 @@ export default function MyTeam() {
           {[...teamMembers, ...teamMembers].map((member, index) => (
             <div
               key={index}
-              className="min-w-[300px] bg-[#1D2144] rounded-lg shadow-lg p-6 m-4 transform transition-transform duration-200"
+              className="min-w-[300px] bg-[#1D2144] rounded-lg shadow-lg p-4 m-4 transform transition-transform duration-200"
               style={{ transform: isDragging ? 'scale(0.95)' : 'scale(1)' }}
             >
               <img
