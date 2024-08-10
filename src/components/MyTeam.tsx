@@ -1,38 +1,40 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react'
-import team1 from '../assets/team/foto1.jpg'
-import team2 from '../assets/team/yan.jpg'
-import bg from '../assets/shapes/shapebg.png'
+import silas from '../assets/team/foto1.jpg'
+import yan from '../assets/team/yan.png'
+import rafa from '../assets/team/rafa.png'
+import joao from '../assets/team/joao.png'
+import gui from '../assets/team/gui.png'
 
 const teamMembers = [
   {
-    name: 'João Silva',
+    name: 'Silas Matos',
     role: 'Frontend Developer',
-    image: team1,
+    image: silas,
     description: 'Especialista em React e UI/UX design.'
   },
   {
-    name: 'Maria Souza',
+    name: 'Yan',
     role: 'Backend Developer',
-    image: team2,
+    image: yan,
     description: 'Experiência em Node.js e banco de dados.'
   },
   {
-    name: 'Pedro Santos',
+    name: 'Rafael',
     role: 'Full Stack Developer',
-    image: team1,
+    image: rafa,
     description: 'Desenvolvedor com conhecimentos em frontend e backend.'
   },
   {
-    name: 'Ana Lima',
-    role: 'DevOps Engineer',
-    image: team1,
+    name: 'Guilherme',
+    role: 'Backend Developer',
+    image: gui,
     description: 'Responsável por CI/CD e automação de infraestrutura.'
   },
   {
-    name: 'Lucas Pereira',
-    role: 'Mobile Developer',
-    image: team1,
+    name: 'João Dias',
+    role: 'Backend/RPA Developer',
+    image: joao,
     description: 'Especialista em desenvolvimento de aplicativos móveis.'
   }
 ]
@@ -109,7 +111,7 @@ export default function MyTeam() {
           {[...teamMembers, ...teamMembers].map((member, index) => (
             <div
               key={index}
-              className="min-w-[300px] bg-[#1D2144] rounded-lg shadow-lg p-4 m-4 transform transition-transform duration-200"
+              className="min-w-[280px] bg-[#1D2144] rounded-lg shadow-lg p-4 m-4 transform transition-transform duration-200"
               style={{ transform: isDragging ? 'scale(0.95)' : 'scale(1)' }}
             >
               <img
@@ -120,7 +122,6 @@ export default function MyTeam() {
               <div className="p-4">
                 <h2 className="text-xl font-bold text-white">{member.name}</h2>
                 <p className="text-white">{member.role}</p>
-                <p className="text-gray-100 mt-2">{member.description}</p>
               </div>
             </div>
           ))}

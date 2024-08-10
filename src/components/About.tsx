@@ -2,15 +2,44 @@ import React from 'react'
 import check from '../assets/img/cheked.png'
 import img from '../assets/img/about-image.svg.png'
 import img1 from '../assets/img/about-image-2.svg.png'
+import { motion } from 'framer-motion'
 
 export default function About() {
+  // Definindo variantes para animações
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  }
+
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 }
+  }
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 }
+  }
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 }
+  }
+
   return (
     <section
       className="min-h-screen bg-[#090E34] p-10 flex items-center flex-col justify-center relative"
       id="sobre"
     >
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-10 p-10 border-b border-blue-950">
-        <div className="text-center md:text-left">
+        <motion.div
+          className="text-center md:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInLeft}
+          transition={{ duration: 0.8 }}
+        >
           <h1 className="text-white text-4xl mb-2">
             Desenvolvido para Startups, SaaS e <br /> Empresas
           </h1>
@@ -20,51 +49,59 @@ export default function About() {
             aprimorada.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="flex items-center gap-2">
-              <img src={check.src} alt="Qualidade premium" />
-              <p className="text-lg font-medium text-gray-400">
-                Qualidade premium
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src={check.src} alt="Sem necessidade de código" />
-              <p className="text-lg font-medium text-gray-400">
-                Sem necessidade de código
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src={check.src} alt="Uso vitalício" />
-              <p className="text-lg font-medium text-gray-400">Uso vitalício</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src={check.src} alt="Atualizações regulares" />
-              <p className="text-lg font-medium text-gray-400">
-                Atualizações regulares
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src={check.src} alt="Documentação rica" />
-              <p className="text-lg font-medium text-gray-400">
-                Documentação rica
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src={check.src} alt="Amigável para desenvolvedores" />
-              <p className="text-lg font-medium text-gray-400">
-                Amigável para desenvolvedores
-              </p>
-            </div>
+            {[
+              'Qualidade premium',
+              'Sem necessidade de código',
+              'Uso vitalício',
+              'Atualizações regulares',
+              'Documentação rica',
+              'Amigável para desenvolvedores'
+            ].map((text, index) => (
+              <motion.div
+                key={index}
+                className="flex items-center gap-2"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInRight}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <img src={check.src} alt={text} />
+                <p className="text-lg font-medium text-gray-400">{text}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
-        <div className="flex justify-center">
+        </motion.div>
+        <motion.div
+          className="flex justify-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInRight}
+          transition={{ duration: 0.8 }}
+        >
           <img src={img.src} alt="Sobre" className="rounded-lg shadow-lg" />
-        </div>
+        </motion.div>
       </div>
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-10 p-10">
-        <div className="flex justify-center">
+        <motion.div
+          className="flex justify-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInLeft}
+          transition={{ duration: 0.8 }}
+        >
           <img src={img1.src} alt="Sobre" className="rounded-lg shadow-lg" />
-        </div>
-        <div className="text-center md:text-left">
+        </motion.div>
+        <motion.div
+          className="text-center md:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInRight}
+          transition={{ duration: 0.8 }}
+        >
           <div className="mb-4">
             <h1 className="text-2xl text-white">Código sem bugs</h1>
             <p className="text-lg text-gray-400">
@@ -86,7 +123,7 @@ export default function About() {
               melhorias.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

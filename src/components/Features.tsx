@@ -6,6 +6,9 @@ import img4 from '../assets/shapes/Overlay4.png'
 import img5 from '../assets/shapes/Overlay5.png'
 import img6 from '../assets/shapes/Overlay6.png'
 
+// Importando o Framer Motion
+import { motion } from 'framer-motion'
+
 // Import the type StaticImageData
 import type { StaticImageData } from 'next/image'
 
@@ -56,11 +59,17 @@ export default function Features() {
     }
   ]
 
+  // Definindo variantes para animações de entrada
+  const fadeInRight = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 }
+  }
+
   return (
     <section className="min-h-screen bg-[#0B113A] p-10 flex items-center flex-col justify-center">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-white text-4xl">Principais Funcionalidades</h1>
+          <h1 className="text-white text-4xl ">Principais Funcionalidades</h1>
           <p className="text-lg font-medium text-gray-300">
             A FivDevs é composta por cinco programadores dedicados a oferecer
             <br />
@@ -69,7 +78,15 @@ export default function Features() {
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {features.map((feature, index) => (
-            <div key={index} className="card p-5 rounded-lg text-white">
+            <motion.div
+              key={index}
+              className="card p-5 rounded-lg text-white"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInRight}
+              transition={{ duration: 0.6, delay: index * 0.2 }} // Delay para cada card
+            >
               <img
                 src={feature.icon.src}
                 alt={`Ícone para ${feature.title}`}
@@ -77,7 +94,7 @@ export default function Features() {
               />
               <h3 className="text-xl mb-2">{feature.title}</h3>
               <p className="text-gray-400">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
